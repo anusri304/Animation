@@ -56,8 +56,7 @@ class MainActivity : AppCompatActivity() {
                     applicationContext,
                     getString(R.string.validation_file_message),
                     Toast.LENGTH_LONG
-                )
-                toast.show()
+                ).show()
             }
         }
     }
@@ -69,9 +68,17 @@ class MainActivity : AppCompatActivity() {
             custom_button.buttonState = ButtonState.Completed
              if(id?.let { isValidDownload(it) } == true) {
                  downloadStatus =   getString(R.string.successful_download)
+                 Toast.makeText(
+                     applicationContext,
+                     getString(R.string.notification_description),
+                     Toast.LENGTH_LONG).show()
              }
             else {
                  downloadStatus =   getString(R.string.failed_download)
+                 Toast.makeText(
+                     applicationContext,
+                     getString(R.string.failed_download),
+                     Toast.LENGTH_LONG).show()
              }
         }
     }

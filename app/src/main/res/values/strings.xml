@@ -11,9 +11,9 @@
     <string name="button_name">Download</string>
     <string name="button_loading">We are loading </string>
     <string name="title_activity_detail">DetailActivity</string>
-    <string name="url_udacity">https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter</string>
-    <string name="url_retrofit">https://github.com/square/retrofit</string>
-    <string name="url_glide">  https://github.com/bumptech/glide</string>
+    <string name="url_udacity">LoadApp- Current repository by Udacity</string>
+    <string name="url_retrofit">Retrofit- Type-Safe HTTP client for \n Android and Java by Square, Inc</string>
+    <string name="url_glide"> Glide- Image loading library by BumpTech</string>
     <string name="validation_file_message">Please select file to download!</string>
     <string name="successful_download">Successfully Downloaded</string>
     <string name="failed_download">Failed to Download</string>

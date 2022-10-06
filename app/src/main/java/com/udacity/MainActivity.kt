@@ -7,8 +7,12 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,42 +27,109 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pendingIntent: PendingIntent
     private lateinit var action: NotificationCompat.Action
 
+    private var selectedRepoURL: String? = null
+    lateinit var downloadManager:DownloadManager
+
+    private val TAG = this::class.java.simpleName
+
+    private var downloadStatus ="";
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        downloadManager=  getSystemService(DOWNLOAD_SERVICE) as DownloadManager
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
+        initLoadingButton()
+    }
 
-//        custom_button.setOnClickListener {
-//            download()
-//        }
+    private fun initLoadingButton() {
+        custom_button.setOnClickListener {
+
+            if (selectedRepoURL != null) {
+                custom_button.buttonState = ButtonState.Loading
+                download()
+
+            } else {
+                val toast = Toast.makeText(
+                    applicationContext,
+                    getString(R.string.validation_file_message),
+                    Toast.LENGTH_LONG
+                )
+                toast.show()
+            }
+        }
     }
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
+
+            custom_button.buttonState = ButtonState.Completed
+             if(id?.let { isValidDownload(it) } == true) {
+                 downloadStatus =   getString(R.string.successful_download)
+             }
+            else {
+                 downloadStatus =   getString(R.string.failed_download)
+             }
         }
+    }
+
+    private fun isValidDownload(downloadId: Long): Boolean {
+        Log.d(TAG, "Checking download status for id: $downloadId")
+
+        //Verify if download is a success
+        val c: Cursor = downloadManager.query(DownloadManager.Query().setFilterById(downloadId))
+        if (c.moveToFirst()) {
+            val status: Int = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS))
+            return if (status == DownloadManager.STATUS_SUCCESSFUL) {
+                true //Download is valid, celebrate
+            } else {
+                val reason: Int = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON))
+                Log.d(TAG, "Download not correct, status [$status] reason [$reason]")
+                false
+            }
+        }
+        return false
+    }
+
+    fun onRadioButtonChecked(view: View) {
+
+            when (view.getId()) {
+                R.id.radioButtonGlide ->
+                    selectedRepoURL = GLIDE_URL
+                R.id.radioButtonUdacity ->
+                    selectedRepoURL = UDACITY_URL
+                R.id.radioButtonRetrofit ->
+                    selectedRepoURL = RETROFIT_URL
+            }
+
+           // selectedFileName = view.text.toString()
     }
 
     private fun download() {
         val request =
-            DownloadManager.Request(Uri.parse(URL))
+            DownloadManager.Request(Uri.parse(selectedRepoURL))
                 .setTitle(getString(R.string.app_name))
                 .setDescription(getString(R.string.app_description))
                 .setRequiresCharging(false)
                 .setAllowedOverMetered(true)
                 .setAllowedOverRoaming(true)
 
-        val downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
         downloadID =
             downloadManager.enqueue(request)// enqueue puts the download request in the queue.
     }
 
     companion object {
-        private const val URL =
+        private const val UDACITY_URL =
             "https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter/archive/master.zip"
+        private const val GLIDE_URL =
+            "https://github.com/bumptech/glide/archive/refs/heads/master.zip"
+        private const val RETROFIT_URL =
+            "https://github.com/square/retrofit/archive/refs/heads/master.zip"
         private const val CHANNEL_ID = "channelId"
+
     }
 
 }

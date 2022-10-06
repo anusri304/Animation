@@ -27,48 +27,55 @@
 
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/radioButtonGlide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="https://github.com/bumptech/glide"
+            android:text="@string/url_glide"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="#009688"
+            android:onClick="onRadioButtonChecked"
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioButtonUdacity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter"
-            android:textColor="#009688"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/url_udacity"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#009688"
+            android:onClick="onRadioButtonChecked"
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioButtonRetrofit"
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-black"
-            android:textColor="#009688"
-            android:text="https://github.com/square/retrofit"
+            android:text="@string/url_retrofit"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#009688"
+            android:onClick="onRadioButtonChecked"
             android:textSize="16sp" />
     </RadioGroup>
 
 
-    <!--    <com.udacity.LoadingButton-->
-    <!--        android:id="@+id/custom_button"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_margin="20dp"-->
-    <!--        android:layout_marginBottom="20dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/radioButton4" />-->
+    <com.udacity.LoadingButton
+        android:id="@+id/custom_button"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:backgroundColor="@color/colorPrimary"
+        app:textColor="@color/white"
+        app:loadingColor="@color/colorPrimaryDark"
+        app:circleColor="@color/yellow"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

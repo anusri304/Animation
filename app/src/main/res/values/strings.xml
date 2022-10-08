@@ -8,6 +8,11 @@
     <string name="notification_description">The Project 3 repository is downloaded</string>
     <string name="notification_button">See changes</string>
 
+
+    <string name="notification_channel_id">load_app_channel</string>
+    <string name="notification_channel_name">Load App</string>
+
+
     <string name="button_name">Download</string>
     <string name="button_loading">We are loading </string>
     <string name="title_activity_detail">DetailActivity</string>
@@ -17,5 +22,10 @@
     <string name="validation_file_message">Please select file to download!</string>
     <string name="successful_download">Successfully Downloaded</string>
     <string name="failed_download">Failed to Download</string>
+
+    <string name="file_notification_channel_id" translatable="false">file_channel</string>
+    <string name="file_name">File Name:</string>
+    <string name="status">Status:</string>
+    <string name="button_ok">OK</string>
 
 </resources>

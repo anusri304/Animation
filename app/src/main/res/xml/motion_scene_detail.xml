@@ -16,6 +16,14 @@
                 android:scaleX="3.0" />
         </KeyFrameSet>
 
+        <KeyFrameSet>
+            <KeyAttribute
+                app:framePosition="40"
+                app:motionTarget="@id/fileNameDesc"
+                android:scaleY="3.0"
+                android:scaleX="3.0" />
+        </KeyFrameSet>
+
     </Transition>
 
 
@@ -30,6 +38,16 @@
             android:layout_marginBottom="551dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/status"/>
+
+        <Constraint
+            android:id="@id/fileNameDesc"
+            android:alpha="0.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="136dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/fileName"
+            app:layout_constraintTop_toTopOf="parent"/>
     </ConstraintSet>
 
     <!-- Constraints to apply at the end of the animation -->
@@ -43,5 +61,16 @@
             android:layout_marginBottom="551dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/status"/>
+
+        <Constraint
+            android:id="@id/fileNameDesc"
+            android:alpha="1.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="136dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/fileName"
+            app:layout_constraintTop_toTopOf="parent"/>
     </ConstraintSet>
+
 </MotionScene>

@@ -13,6 +13,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.RadioButton
@@ -65,8 +66,9 @@ class MainActivity : AppCompatActivity() {
         custom_button.setOnClickListener {
 
             if (selectedRepoURL != null) {
-                custom_button.buttonState = ButtonState.Loading
+           custom_button.buttonState = ButtonState.Loading
                 download()
+
 
             } else {
                 Toast.makeText(
@@ -105,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
 
             custom_button.buttonState = ButtonState.Completed
-            if (id?.let { isValidDownload(it) } == true) {
+            if (id?.let { isValidDownload(it) } == true && downloadID ==id && intent.action.equals(DownloadManager.ACTION_DOWNLOAD_COMPLETE)) {
                 downloadStatus = getString(R.string.successful_download)
                 Toast.makeText(
                     applicationContext,
@@ -170,6 +172,8 @@ class MainActivity : AppCompatActivity() {
             DownloadManager.Request(Uri.parse(selectedRepoURL))
                 .setTitle(getString(R.string.app_name))
                 .setDescription(getString(R.string.app_description))
+                .setDestinationInExternalFilesDir(this,
+                    Environment.DIRECTORY_DOWNLOADS,selectedRepoURL)
                 .setRequiresCharging(false)
                 .setAllowedOverMetered(true)
                 .setAllowedOverRoaming(true)

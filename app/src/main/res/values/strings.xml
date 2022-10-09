@@ -23,8 +23,8 @@
     <string name="successful_download">Successfully Downloaded</string>
     <string name="failed_download">Failed to Download</string>
 
-    <string name="file_notification_channel_id" translatable="false">file_channel</string>
-    <string name="file_name">File Name:</string>
+
+    <string name="file_name">File name:</string>
     <string name="status">Status:</string>
     <string name="button_ok">OK</string>
 

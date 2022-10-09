@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <Transition
+
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end"
+        app:duration="3000"
+        app:autoTransition="animateToEnd">
+
+        <KeyFrameSet>
+            <KeyAttribute
+                app:framePosition="50"
+                app:motionTarget="@id/statusDesc"
+                android:scaleY="2.0"
+                android:scaleX="2.0" />
+        </KeyFrameSet>
+
+    </Transition>
+
+    <!-- Constraints to apply at the start of the animation -->
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/statusDesc"
+            android:alpha="0.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginBottom="551dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/status"/>
+    </ConstraintSet>
+
+    <!-- Constraints to apply at the end of the animation -->
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/statusDesc"
+            android:alpha="1.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginBottom="551dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/status"/>
+    </ConstraintSet>
+</MotionScene>

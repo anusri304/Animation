@@ -12,8 +12,8 @@
             <KeyAttribute
                 app:framePosition="50"
                 app:motionTarget="@id/statusDesc"
-                android:scaleY="2.0"
-                android:scaleX="2.0" />
+                android:scaleY="3.0"
+                android:scaleX="3.0" />
         </KeyFrameSet>
 
     </Transition>
@@ -25,7 +25,7 @@
             android:alpha="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
+            android:layout_marginStart="36dp"
             android:layout_marginBottom="551dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/status"/>
@@ -38,7 +38,7 @@
             android:alpha="1.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
+            android:layout_marginStart="36dp"
             android:layout_marginBottom="551dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/status"/>

@@ -17,7 +17,7 @@
     <string name="button_loading">We are loading </string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="url_udacity">LoadApp- Current repository by Udacity</string>
-    <string name="url_retrofit">Retrofit- Type-Safe HTTP client for \n Android and Java by Square, Inc</string>
+    <string name="url_retrofit">Retrofit- Type-Safe HTTP client for Android and Java by Square, Inc</string>
     <string name="url_glide"> Glide- Image loading library by BumpTech</string>
     <string name="validation_file_message">Please select file to download!</string>
     <string name="successful_download">Successfully Downloaded</string>
